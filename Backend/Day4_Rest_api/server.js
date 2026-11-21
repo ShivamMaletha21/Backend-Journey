@@ -3,6 +3,8 @@ let express = require('express');
 
 let app = express();
 
+app.use(express.json());
+
 let users = [
 
     {
@@ -30,11 +32,15 @@ app.get ('/users', (req,res)=>{
         message: "user fetched",
         users:users,
     })
-}),
+});
 
-app.post ('/getusers',(req,res)=>{
-    return res.send("ok");
-})
+app.post('/getusers',(req,res)=>{
+
+    console.log(req.body);
+    return res.send("ok shivam is here");
+});
+
+
 
 let port = 3000;
 app.listen(port,()=>{
