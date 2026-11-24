@@ -51,6 +51,17 @@ app.put ("/users/update/:index", (req,res)=>{
 
 });
 
+// delete
+app.delete("/users/delete/:index", (req,res)=>{
+    let {index} = req.params;
+
+    users.splice(index,1);
+
+    return res.status(200).json ({
+        message :"user deleted"
+    });
+});
+
 module.exports = app;
 
 // note
