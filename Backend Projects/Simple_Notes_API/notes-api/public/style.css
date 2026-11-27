@@ -1,0 +1,476 @@
+/* ==============================
+   1. GLOBAL STYLES
+============================== */
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --background: #f5f7ff;
+    --white: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --danger: #ef4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #f8faff, #eef2ff);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+/* ==============================
+   2. MAIN CONTAINER
+============================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 55px 24px;
+}
+
+/* ==============================
+   3. HEADER
+============================== */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+
+h1 span {
+    color: var(--primary);
+}
+
+.subtitle {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.counter {
+    background: #e8e7ff;
+    color: var(--primary-dark);
+    border-radius: 30px;
+    padding: 11px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ==============================
+   4. NOTE EDITOR
+============================== */
+
+.editor {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(30, 41, 59, 0.05);
+}
+
+.editor h2,
+.section-title h2 {
+    font-size: 21px;
+    font-weight: 750;
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 650;
+    margin-bottom: 9px;
+    color: #334155;
+}
+
+input,
+textarea {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 17px;
+    margin-bottom: 23px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    background: white;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* ==============================
+   5. FORM BUTTONS
+============================== */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.button {
+    border: none;
+    border-radius: 11px;
+    padding: 13px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+}
+
+.primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.secondary {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.secondary:hover {
+    background: #e2e8f0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==============================
+   6. NOTES SECTION
+============================== */
+
+.notes-section {
+    margin-top: 50px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    margin: 0;
+}
+
+.refresh {
+    border: 1px solid #c7d2fe;
+    background: white;
+    color: var(--primary);
+    border-radius: 10px;
+    padding: 10px 17px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.refresh:hover {
+    background: #eef2ff;
+}
+
+.status {
+    font-size: 13px;
+    color: var(--muted);
+    min-height: 20px;
+    margin: 15px 0;
+}
+
+.status.error {
+    color: #dc2626;
+}
+
+/* ==============================
+   7. NOTES GRID
+============================== */
+
+.notes-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+/* ==============================
+   8. NOTE CARDS
+============================== */
+
+.note-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 210px;
+
+    box-shadow: 0 5px 20px rgba(30, 41, 59, 0.04);
+    transition: 0.25s ease;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    border-color: #c7d2fe;
+    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.1);
+}
+
+.note-card h3 {
+    font-size: 17px;
+    font-weight: 750;
+    margin-bottom: 13px;
+    color: #1e293b;
+    overflow-wrap: anywhere;
+}
+
+.note-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    flex: 1;
+    margin-bottom: 25px;
+}
+
+/* ==============================
+   9. EDIT & DELETE BUTTONS
+============================== */
+
+/* Works when buttons are direct
+   children of .note-card */
+
+.note-card>button {
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    padding: 11px 15px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Edit button */
+
+.note-card>button:not(.delete) {
+    background: #eef2ff;
+    color: #4f46e5;
+    margin-bottom: 9px;
+}
+
+.note-card>button:not(.delete):hover {
+    background: #6366f1;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Delete button */
+
+.note-card>button.delete {
+    background: #fff1f2;
+    color: #e11d48;
+}
+
+.note-card>button.delete:hover {
+    background: #e11d48;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* ==============================
+   10. BUTTONS WITH ACTION WRAPPER
+============================== */
+
+/* Also supports .card-actions if
+   you use it in JavaScript later */
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.card-actions button {
+    flex: 1;
+    border: none;
+    border-radius: 9px;
+    padding: 11px 15px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.card-actions button:not(.delete) {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.card-actions button:not(.delete):hover {
+    background: #6366f1;
+    color: white;
+}
+
+.card-actions button.delete {
+    background: #fff1f2;
+    color: #e11d48;
+}
+
+.card-actions button.delete:hover {
+    background: #e11d48;
+    color: white;
+}
+
+/* ==============================
+   11. EMPTY STATE
+============================== */
+
+.empty {
+    grid-column: 1 / -1;
+    background: white;
+    border: 2px dashed #cbd5e1;
+    border-radius: 16px;
+    text-align: center;
+    color: #94a3b8;
+    padding: 55px 20px;
+    font-size: 14px;
+}
+
+/* ==============================
+   12. FOOTER
+============================== */
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 70px;
+}
+
+/* ==============================
+   13. ACCESSIBILITY
+============================== */
+
+button:focus-visible {
+    outline: 3px solid #818cf8;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ==============================
+   14. MOBILE RESPONSIVENESS
+============================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 30px 16px;
+    }
+
+    .header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .counter {
+        padding: 9px 12px;
+        font-size: 11px;
+    }
+
+    .editor {
+        padding: 24px 20px;
+    }
+
+    .notes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-wrap: wrap;
+    }
+
+    .button {
+        flex: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}

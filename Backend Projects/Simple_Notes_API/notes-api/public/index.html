@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Notes</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL SPACE</p>
+          <h1>My Notes<span>.</span></h1>
+          <p class="subtitle">Keep your thoughts and tasks in one place.</p>
+        </div>
+        <span class="counter" id="noteCount">0 notes</span>
+      </header>
+      <section class="editor" aria-label="Note editor">
+        <h2 id="formHeading">Create a note</h2>
+        <form id="noteForm">
+          <label for="title">Title</label
+          ><input
+            id="title"
+            name="title"
+            placeholder="What's on your mind?"
+            maxlength="100"
+            required
+          /><label for="content">Content</label
+          ><textarea
+            id="content"
+            name="content"
+            rows="4"
+            placeholder="Write something worth remembering..."
+            required
+          ></textarea>
+          <div class="form-actions">
+            <button
+              class="button secondary hidden"
+              type="button"
+              id="cancelEdit"
+            >
+              Cancel edit</button
+            ><button class="button primary" type="submit" id="saveButton">
+              + Add note
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="notes-section" aria-label="Saved notes">
+        <div class="section-title">
+          <h2>Your notes</h2>
+          <button id="refreshButton" class="refresh" type="button">
+            ↻ Refresh
+          </button>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <div id="notesContainer" class="notes-grid"></div>
+      </section>
+      <footer>Built with Node.js, Express & vanilla JavaScript</footer>
+    </main>
+  </body>
+</html>

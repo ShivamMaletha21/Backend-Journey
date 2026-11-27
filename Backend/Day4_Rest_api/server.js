@@ -47,4 +47,3 @@ app.listen(port,()=>{
     console.log(`server is running on port ${port}`);
 })
 
-console.log("just commiting anything , study from tomorrow bcz right now i am finishing my college assigment , as i have to write around 200 pages");
